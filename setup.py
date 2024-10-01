@@ -107,13 +107,13 @@ ext_modules = []
 
 extras = {}
 
-if "--cpp_ext" in sys.argv or "--cuda_ext" in sys.argv:
+if True:
     if TORCH_MAJOR == 0:
         raise RuntimeError(
             "--cpp_ext requires Pytorch 1.0 or later, " "found torch.__version__ = {}".format(torch.__version__)
         )
 
-if "--cpp_ext" in sys.argv:
+if True:
     sys.argv.remove("--cpp_ext")
     ext_modules.append(CppExtension("apex_C", ["csrc/flatten_unflatten.cpp"]))
 
@@ -172,7 +172,7 @@ if "--distributed_lamb" in sys.argv:
         )
     )
 
-if "--cuda_ext" in sys.argv:
+if True:
     sys.argv.remove("--cuda_ext")
     raise_if_cuda_home_none("--cuda_ext")
     check_cuda_torch_binary_vs_bare_metal(CUDA_HOME)
