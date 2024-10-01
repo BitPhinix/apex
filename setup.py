@@ -103,7 +103,9 @@ if True:
         )
 
 if True:
-    sys.argv.remove("--cpp_ext")
+    if "--cpp_ext" in sys.argv:
+        sys.argv.remove("--cpp_ext")
+    
     ext_modules.append(CppExtension("apex_C", ["csrc/flatten_unflatten.cpp"]))
 
 
@@ -162,7 +164,9 @@ if "--distributed_lamb" in sys.argv:
     )
 
 if True:
-    sys.argv.remove("--cuda_ext")
+    if "--cuda_ext" in sys.argv:
+        sys.argv.remove("--cuda_ext")
+    
     raise_if_cuda_home_none("--cuda_ext")
     check_cuda_torch_binary_vs_bare_metal(CUDA_HOME)
 
